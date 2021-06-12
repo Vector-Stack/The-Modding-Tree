@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Class 9,Grade 7 Tree",
 	id: "mymod",
 	author: "nobody",
-	pointsName: "points",
+	pointsName: "xxx",
 	discordName: "",
 	discordLink: "",
 	initialStartPoints: new Decimal (10), // Used for hard resets and new players
@@ -42,6 +42,11 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	gain=gain.mul(player.cyf.points.plus(1).pow(0.3))
+	if(hasUpgrade("hrl",12))gain=gain.mul(4)
+	if(hasUpgrade("hrl",11))gain=gain.mul(player.points.pow(0.5).plus(1))
+	if(hasUpgrade("hrl",13))gain=gain.mul(player.hrl.points.pow(0.8).plus(1))
+	
 	return gain
 }
 
